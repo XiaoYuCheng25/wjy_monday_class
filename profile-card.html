@@ -1,19 +1,254 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Card</title>
-    <link rel="stylesheet" href="profile-card.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>網站前端技術應用</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --primary: #1f6feb;
+      --primary-dark: #174ea6;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #dfe7f3;
+      --shadow: 0 12px 30px rgba(31, 111, 235, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #eef5ff 0%, #f8fafc 100%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .site-header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 5px 18px rgba(15, 23, 42, 0.03);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
+    }
+
+    .brand p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      padding: 36px 0 24px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      font-size: clamp(1.4rem, 2vw, 1.9rem);
+      color: var(--primary-dark);
+    }
+
+    .intro-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .goal-list {
+      margin: 20px 0 0;
+      padding-left: 20px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .toggle-btn {
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .toggle-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .syllabus-list {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 2;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      .panel {
+        padding: 20px 18px;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      .section-head {
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1 id="courseTitle">網站前端技術應用</h1>
+        <p>授課教師：<span id="teacherName">王佳盈</span></p>
+      </div>
 
-    <div class="profile-card">
-        <h1>蕭宇呈</h1>
-        <p>中原大學電機工程學系</p>
-        <p>喜歡跑步、程式設計與學習新技術。</p>
+      <nav aria-label="主導覽">
+        <ul>
+          <li><a href="#course-goal">課程目標</a></li>
+          <li><a href="#course-syllabus">教學大綱</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
+  <main class="container">
+    <section id="course-goal" class="panel" aria-labelledby="goal-title">
+      <h2 id="goal-title">課程目標簡介</h2>
+      <p class="intro-text">
+        本課程旨在協助學生掌握網站前端開發的核心概念與實作技能，從 HTML、CSS
+        到 JavaScript 的基礎應用，建立完整的前端開發思維與實務能力。
+      </p>
+      <ul class="goal-list">
+        <li>理解網頁結構與語意化標籤的設計原則。</li>
+        <li>建立符合使用者體驗的頁面版面與互動設計。</li>
+        <li>學習前端程式邏輯，提升動態內容與事件處理能力。</li>
+      </ul>
+    </section>
+
+    <section id="course-syllabus" class="panel" aria-labelledby="syllabus-title">
+      <div class="section-head">
+        <h2 id="syllabus-title">教學大綱</h2>
+        <button id="toggleSyllabus" class="toggle-btn" type="button" aria-expanded="true">
+          收合教學大綱
+        </button>
+      </div>
+
+      <div id="syllabusContent">
+        <ul class="syllabus-list">
+          <li>Week 1：網頁概論與前端工程背景</li>
+          <li>Week 2：HTML 結構與語意化標籤</li>
+          <li>Week 3：CSS 基礎與版面設計</li>
+          <li>Week 4：JavaScript 基礎語法與 DOM 操作</li>
+          <li>Week 5：互動效果與事件處理</li>
+          <li>Week 6：課程整合與成果展示</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 網站前端技術應用｜授課教師：王佳盈
+  </footer>
+
+  <script>
+    const courseInfo = {
+      name: '網站前端技術應用',
+      teacher: '王佳盈',
+      semester: '研究所課程',
+      focus: ['HTML', 'CSS', 'JavaScript', '前端互動設計']
+    };
+
+    document.getElementById('courseTitle').textContent = courseInfo.name;
+    document.getElementById('teacherName').textContent = courseInfo.teacher;
+
+    console.log('課程基本資訊：', courseInfo);
+
+    const toggleButton = document.getElementById('toggleSyllabus');
+    const syllabusContent = document.getElementById('syllabusContent');
+    let isExpanded = true;
+
+    toggleButton.addEventListener('click', function () {
+      isExpanded = !isExpanded;
+      syllabusContent.hidden = !isExpanded;
+      toggleButton.setAttribute('aria-expanded', String(isExpanded));
+      toggleButton.textContent = isExpanded ? '收合教學大綱' : '展開教學大綱';
+      console.log(`教學大綱目前狀態：${isExpanded ? '展開' : '收合'}`);
+    });
+  </script>
 </body>
 </html>
